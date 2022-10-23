@@ -11,5 +11,5 @@ Vehicle.cpp
 Vehicle.h
 VehicleType.h
 main.cpp
- "FastCamel.h" "FastCamel.cpp" "Centaur.h" "Centaur.cpp" "AllTerrainBoots.h" "AllTerrainBoots.cpp")
+ "FastCamel.h" "FastCamel.cpp" "Centaur.h" "Centaur.cpp" "AllTerrainBoots.h" "AllTerrainBoots.cpp" "AirVehicle.h" "AirVehicle.cpp" "FlyingCarpet.h" "FlyingCarpet.cpp" "Eagle.h" "Eagle.cpp" "Broomstick.h" "Broomstick.cpp")
 target_compile_definitions(RaceSimulation PRIVATE RACESIMULATION_EXPORTS)
