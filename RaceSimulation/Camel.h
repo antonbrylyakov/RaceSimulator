@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "GroundVehicle.h"
 
 class Camel: public GroundVehicle
@@ -7,6 +7,6 @@ class Camel: public GroundVehicle
         Camel();
 
     protected:
-
+        virtual double getRestTimeHr(const int distanceKm) const override;
     private:
 };
