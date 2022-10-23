@@ -1,5 +1,9 @@
-#include "Vehicle.h"
+﻿#include "Vehicle.h"
 
+Vehicle::~Vehicle()
+{
+
+}
 
 VehicleType Vehicle::getVehicleType()
 {

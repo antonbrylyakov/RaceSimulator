@@ -5,7 +5,6 @@ class GroundVehicle: public Vehicle
 {
     public:
         GroundVehicle();
-        virtual ~GroundVehicle();
     protected:
         // Время движения до отдыха
         int _motionTimeBeforeRestHr = 0;

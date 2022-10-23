@@ -5,6 +5,7 @@
 class Vehicle
 {
 public:
+    virtual ~Vehicle();
     VehicleType getVehicleType();
     virtual double getRaceTimeHr(const int distanceKm) const = 0;
 protected:

@@ -1,12 +1,9 @@
 ﻿#include "GroundVehicle.h"
+#include <cmath>
 
 GroundVehicle::GroundVehicle()
 {
     _type = GROUND;
-}
-
-GroundVehicle::~GroundVehicle()
-{
 }
 
 double GroundVehicle::getMotionTimeHr(const int distanceKm) const
@@ -16,8 +13,9 @@ double GroundVehicle::getMotionTimeHr(const int distanceKm) const
 
 int GroundVehicle::getRestNumber(const int distanceKm) const
 {
-    // деление нацело
-    return static_cast<int>(getMotionTimeHr(distanceKm)) / _motionTimeBeforeRestHr;
+    const auto numberOfMotionPeriods = getMotionTimeHr(distanceKm) / _motionTimeBeforeRestHr;
+    // если пришли на финиш в точности, когда надо отдыхать, то считаем, что отдых уже не нужен
+    return numberOfMotionPeriods < 1 ? 0 : std::ceil(numberOfMotionPeriods) - 1;
 }
 
 double GroundVehicle::getRaceTimeHr(const int distanceKm) const
