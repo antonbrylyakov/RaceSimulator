@@ -11,5 +11,5 @@ Vehicle.cpp
 Vehicle.h
 VehicleType.h
 main.cpp
-)
+ "FastCamel.h" "FastCamel.cpp")
 target_compile_definitions(RaceSimulation PRIVATE RACESIMULATION_EXPORTS)

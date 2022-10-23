@@ -2,6 +2,7 @@
 
 Camel::Camel()
 {
+    _name = "Верблюд";
     _velocityKmh = 10;
     _motionTimeBeforeRestHr = 30;
 }
@@ -9,11 +10,12 @@ Camel::Camel()
 double Camel::getRestTimeHr(const int distanceKm) const
 {
     const auto restNumber = getRestNumber(distanceKm);
-    if (restNumber == 0)
+    double result = 0;
+    if (restNumber > 0)
     {
-        return 0;
+        // первый отдых 5, остальные 8 часов
+        result += 5 + (restNumber - 1) * 8;
     }
-
-    // первый отдых 5, остальные 8 часов
-    return 5 + (restNumber - 1) * 8;
+    
+    return result;
 }
