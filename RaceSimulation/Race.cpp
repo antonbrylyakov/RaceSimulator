@@ -28,7 +28,7 @@ void Race::init(RaceType type, int distanceKm)
     memset(_vehicleAssignmentMap, 0, _vehicleCount * sizeof(bool));
 }
 
-VehicleAssignmentResult Race::AssignVehicle(const int index)
+VehicleAssignmentResult Race::assignVehicle(const int index)
 {
     if (index < 0 || index >= _vehicleCount)
     {

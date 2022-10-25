@@ -20,7 +20,7 @@ class RACESIMULATION_API Race
         void init(RaceType type, int distanceKm);
 
         // Добавляет ТС для участия в гонке по индексу.
-        VehicleAssignmentResult AssignVehicle(const int index);
+        VehicleAssignmentResult assignVehicle(const int index);
 
         // Возвращает отчет по ТС, выбранных для гонки. Включает весь список ТС.
         VehicleAssignmentReport createAssignmentReport() const;
