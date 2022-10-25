@@ -2,7 +2,7 @@
 
 AllTerrainBoots::AllTerrainBoots()
 {
-    _name = "Ботнки-вездеходы";
+    _name = "Ботинки-вездеходы";
     _velocityKmh = 6;
     _motionTimeBeforeRestHr = 60;
 }

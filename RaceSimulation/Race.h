@@ -17,7 +17,7 @@ class RACESIMULATION_API Race
         RaceType getRaceType() const;
 
         // инициализирует новую гонку.
-        void Init(RaceType type, int distanceKm);
+        void init(RaceType type, int distanceKm);
 
         // Добавляет ТС для участия в гонке по индексу.
         VehicleAssignmentResult AssignVehicle(const int index);
@@ -27,6 +27,10 @@ class RACESIMULATION_API Race
 
         // Создает результат гонки
         RaceResultReport createRaceResultReport() const;
+
+        Vehicle* const getVehicle(int index) const;
+
+        int getDistanceKm() const;
 
     private:
         RaceType _type = GROUND_RACE;

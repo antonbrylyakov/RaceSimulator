@@ -32,13 +32,20 @@ int main()
 		{
 			RaceType raceType = Presentation::askRaceTypes();
 			int distanceKm = Presentation::askDistanceKm();
+			race.init(raceType, distanceKm);
+			Presentation::clearScreen();
 			bool registrationComplete = false;
 			do
 			{
 				int input = Presentation::askRegistrationAction(race);
 				registrationComplete = input == 0;
+				if (!registrationComplete)
+				{
+					Presentation::assignVehicle(race, input - 1);
+				}
 			} while (!registrationComplete);
 
+			// TODO: вывести результаты гонки
 
 		} while (input != 0);
 	}

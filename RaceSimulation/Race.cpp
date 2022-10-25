@@ -1,4 +1,6 @@
 ﻿#include "Race.h"
+#include "Race.h"
+#include "Race.h"
 #include <stdexcept>
 
 Race::Race(Vehicle** vehicles, const int count)
@@ -18,12 +20,12 @@ RaceType Race::getRaceType() const
     return _type;
 }
 
-void Race::Init(RaceType type, int distanceKm)
+void Race::init(RaceType type, int distanceKm)
 {
     _type = type;
     _distanceKm = distanceKm;
     _assignedVehicleCount = 0;
-    memset(_vehicleAssignmentMap, 0, sizeof(_vehicleAssignmentMap));
+    memset(_vehicleAssignmentMap, 0, _vehicleCount * sizeof(bool));
 }
 
 VehicleAssignmentResult Race::AssignVehicle(const int index)
@@ -82,7 +84,17 @@ RaceResultReport Race::createRaceResultReport() const
     return RaceResultReport(items, _assignedVehicleCount);
 }
 
+Vehicle* const Race::getVehicle(int index) const
+{
+    return _vehicles[index];
+}
+
+int Race::getDistanceKm() const
+{
+    return _distanceKm;
+}
+
 bool Race::isVehicleTypeAvailableToAssignment(VehicleType vehicleType) const
 {
-    return (static_cast<int>(vehicleType) == static_cast<int>(_type) || _type != MIXED_RACE);
+    return (static_cast<int>(vehicleType) == static_cast<int>(_type) || _type == MIXED_RACE);
 }
