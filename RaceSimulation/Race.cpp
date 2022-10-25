@@ -76,6 +76,11 @@ RaceResultReport Race::createRaceResultReport() const
         if (_vehicleAssignmentMap[i])
         {
             const auto vehicle = _vehicles[i];
+            if (itemIndex >= _assignedVehicleCount)
+            {
+                throw std::logic_error("Некорректное состояние объекта Race");
+            }
+
             items[itemIndex++] = new RaceResultItem(vehicle, vehicle->getRaceTimeHr(_distanceKm));
         }
     }
