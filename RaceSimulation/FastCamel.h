@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include "GroundVehicle.h"
+#include "RaceSimulationExports.h"
 
-class FastCamel : public GroundVehicle
+class RACESIMULATION_API FastCamel : public GroundVehicle
 {
 public:
     FastCamel();

@@ -1,6 +1,7 @@
 ﻿#pragma once
+#include "RaceSimulationExports.h"
 
-enum VehicleAssignmentResult
+enum RACESIMULATION_API VehicleAssignmentResult
 {
 	SUCCESS = 0,
 	ALREADY_ASSIGNED,

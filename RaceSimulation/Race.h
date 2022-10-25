@@ -4,8 +4,9 @@
 #include "VehicleAssignmentResult.h"
 #include "RaceResultReport.h"
 #include "VehicleAssignmentReport.h"
+#include "RaceSimulationExports.h"
 
-class Race
+class RACESIMULATION_API Race
 {
     public:
         Race(Vehicle** vehicles, const int count);
@@ -16,7 +17,7 @@ class Race
         RaceType getRaceType() const;
 
         // инициализирует новую гонку.
-        void Init(RaceType type);
+        void Init(RaceType type, int distanceKm);
 
         // Добавляет ТС для участия в гонке по индексу.
         VehicleAssignmentResult AssignVehicle(const int index);
@@ -25,10 +26,11 @@ class Race
         VehicleAssignmentReport createAssignmentReport() const;
 
         // Создает результат гонки
-        RaceResultReport createRaceResultReport(int distanceKm) const;
+        RaceResultReport createRaceResultReport() const;
 
     private:
         RaceType _type = GROUND_RACE;
+        int _distanceKm = 0;
         int _vehicleCount = 0;
         int _assignedVehicleCount = 0;
         Vehicle** _vehicles;

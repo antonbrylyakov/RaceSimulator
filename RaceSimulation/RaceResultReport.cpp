@@ -16,6 +16,11 @@ RaceResultReport::~RaceResultReport()
 	delete[] _items;
 }
 
+RACESIMULATION_API RaceResultItem* const* const RaceResultReport::getItems() const
+{
+	return _items;
+}
+
 int RaceResultReport::getCount() const
 {
 	return _count;

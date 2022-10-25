@@ -1,9 +1,10 @@
 ﻿#pragma once
 #include "VehicleType.h"
 #include <string>
+#include "RaceSimulationExports.h"
 
 // Абстрактный базовый класс для ТС
-class Vehicle
+class RACESIMULATION_API Vehicle
 {
 public:
     virtual ~Vehicle();

@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include "Vehicle.h"
+#include "RaceSimulationExports.h"
 
-class VehicleAssignmentItem
+class RACESIMULATION_API VehicleAssignmentItem
 {
 	public:
 		VehicleAssignmentItem(Vehicle* vehicle, bool assigned, bool availableToAssign);

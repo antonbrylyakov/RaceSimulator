@@ -1,16 +1,4 @@
 ﻿cmake_minimum_required(VERSION 3.10)
 project(RaceSimulation)
-set(WINDOWS_EXPORT_ALL_SYMBOLS ON)
-add_library(RaceSimulation SHARED
-Camel.cpp
-Camel.h
-GroundVehicle.cpp
-GroundVehicle.h
-Race.cpp
-Race.h
-Vehicle.cpp
-Vehicle.h
-VehicleType.h
-main.cpp
- "FastCamel.h" "FastCamel.cpp" "Centaur.h" "Centaur.cpp" "AllTerrainBoots.h" "AllTerrainBoots.cpp" "AirVehicle.h" "AirVehicle.cpp" "FlyingCarpet.h" "FlyingCarpet.cpp" "Eagle.h" "Eagle.cpp" "Broomstick.h" "Broomstick.cpp"  "VehicleAssignmentResult.h" "RaceType.h" "RaceResultItem.h" "RaceResultItem.cpp" "RaceResultReport.h" "RaceResultReport.cpp" "VehicleAssignmentItem.h" "VehicleAssignmentItem.cpp" "VehicleAssignmentReport.h" "VehicleAssignmentReport.cpp")
+add_library(RaceSimulation SHARED "Camel.cpp" "Camel.h" "GroundVehicle.cpp" "GroundVehicle.h" "Race.cpp" "Race.h" "Vehicle.cpp" "Vehicle.h" "VehicleType.h" "FastCamel.h" "FastCamel.cpp" "Centaur.h" "Centaur.cpp" "AllTerrainBoots.h" "AllTerrainBoots.cpp" "AirVehicle.h" "AirVehicle.cpp" "FlyingCarpet.h" "FlyingCarpet.cpp" "Eagle.h" "Eagle.cpp" "Broomstick.h" "Broomstick.cpp"  "VehicleAssignmentResult.h" "RaceType.h" "RaceResultItem.h" "RaceResultItem.cpp" "RaceResultReport.h" "RaceResultReport.cpp" "VehicleAssignmentItem.h" "VehicleAssignmentItem.cpp" "VehicleAssignmentReport.h" "VehicleAssignmentReport.cpp" "RaceSimulationExports.h")
 target_compile_definitions(RaceSimulation PRIVATE RACESIMULATION_EXPORTS)

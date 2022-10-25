@@ -18,9 +18,10 @@ RaceType Race::getRaceType() const
     return _type;
 }
 
-void Race::Init(RaceType type)
+void Race::Init(RaceType type, int distanceKm)
 {
     _type = type;
+    _distanceKm = distanceKm;
     _assignedVehicleCount = 0;
     memset(_vehicleAssignmentMap, 0, sizeof(_vehicleAssignmentMap));
 }
@@ -64,7 +65,7 @@ VehicleAssignmentReport Race::createAssignmentReport() const
     return VehicleAssignmentReport(items, _vehicleCount);
 }
 
-RaceResultReport Race::createRaceResultReport(int distanceKm) const
+RaceResultReport Race::createRaceResultReport() const
 {
     RaceResultItem** items = new RaceResultItem * [_assignedVehicleCount];
     int itemIndex = 0;
@@ -73,7 +74,7 @@ RaceResultReport Race::createRaceResultReport(int distanceKm) const
         if (_vehicleAssignmentMap[i])
         {
             const auto vehicle = _vehicles[i];
-            items[itemIndex++] = new RaceResultItem(vehicle, vehicle->getRaceTimeHr(distanceKm));
+            items[itemIndex++] = new RaceResultItem(vehicle, vehicle->getRaceTimeHr(_distanceKm));
         }
     }
 

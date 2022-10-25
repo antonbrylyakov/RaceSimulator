@@ -1,12 +1,12 @@
 ﻿#pragma once
 #include "Vehicle.h"
 
-class RaceResultItem sealed
+class RaceResultItem
 {
 	public:
 		RaceResultItem(Vehicle* vehicle, double raceTimeHr);
-		Vehicle* const getVehicle() const;
-		double getRaceTimeHr() const;
+		RACESIMULATION_API Vehicle* const getVehicle() const;
+		RACESIMULATION_API double getRaceTimeHr() const;
 	protected:
 		Vehicle* _vehicle;
 		double _raceTimeHr;

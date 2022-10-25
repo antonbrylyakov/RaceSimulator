@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include "AirVehicle.h"
+#include "RaceSimulationExports.h"
 
-class FlyingCarpet : AirVehicle
+class RACESIMULATION_API FlyingCarpet : public AirVehicle
 {
 	public:
 		FlyingCarpet();
