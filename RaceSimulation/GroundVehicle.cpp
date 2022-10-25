@@ -3,7 +3,7 @@
 
 GroundVehicle::GroundVehicle()
 {
-    _type = GROUND;
+    _type = GROUND_VEHICLE;
 }
 
 double GroundVehicle::getMotionTimeHr(const int distanceKm) const

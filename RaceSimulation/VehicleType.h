@@ -1,7 +1,7 @@
-#pragma once
+﻿#pragma once
 
 enum VehicleType
 {
-    GROUND,
-    AIR
+    GROUND_VEHICLE = 0,
+    AIR_VEHICLE
 };

@@ -2,5 +2,5 @@
 
 AirVehicle::AirVehicle()
 {
-	_type = AIR;
+	_type = AIR_VEHICLE;
 }
