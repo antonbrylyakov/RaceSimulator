@@ -203,7 +203,7 @@ void Presentation::clearScreen()
 	std::system("cls");
 #else
 	std::system("clear");
-#endif;
+#endif
 }
 
 void Presentation::showUnexpectedError(std::exception ex)
