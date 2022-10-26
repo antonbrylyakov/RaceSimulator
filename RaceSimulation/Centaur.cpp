@@ -9,5 +9,6 @@ Centaur::Centaur()
 
 double Centaur::getRestTimeHr(const int distanceKm) const
 {
-    return 8 * getRestNumber(distanceKm);
+    // отдыхает 2 ч.
+    return 2 * getRestNumber(distanceKm);
 }
