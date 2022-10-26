@@ -7,6 +7,8 @@ namespace Presentation
 {
 	void greet();
 
+	void showInvalidInputMessage();
+
 	std::string getRaceTypeName(RaceType raceType);
 
 	RaceType askRaceTypes();
@@ -17,9 +19,17 @@ namespace Presentation
 
 	void showRegisteredVehicles(VehicleAssignmentReport& assignmentReport);
 
+	void registerVehicles(Race& race);
+
 	int askRegistrationAction(Race& race);
 
 	void assignVehicle(Race& race, int index);
 
+	void showRaceResults(RaceResultReport& resultsReport);
+
+	bool askNewRaceAction();
+
 	void clearScreen();
+
+	void showUnexpectedError(std::exception ex);
 }

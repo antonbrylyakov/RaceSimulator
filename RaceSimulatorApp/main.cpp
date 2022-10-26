@@ -9,24 +9,17 @@
 
 int main()
 {
+	int applicationResult = 0;
 	setlocale(LC_ALL, "Russian");
-	int input = 0;
-	Presentation::greet();
-
-	int vehicleCount = 7;
-	int vehicleIndex = 0;
-	Vehicle** vehicles = new Vehicle * [vehicleCount];
-	vehicles[vehicleIndex++] = new AllTerrainBoots();
-	vehicles[vehicleIndex++] = new Broomstick();
-	vehicles[vehicleIndex++] = new Camel();
-	vehicles[vehicleIndex++] = new Centaur();
-	vehicles[vehicleIndex++] = new Eagle();
-	vehicles[vehicleIndex++] = new FastCamel();
-	vehicles[vehicleIndex++] = new FlyingCarpet();
+	Vehicle* vehicles[] = { new AllTerrainBoots(), new Broomstick(), new Camel(), new Centaur(), new Eagle(), new FastCamel(), new FlyingCarpet() };
+	int vehicleCount = sizeof(vehicles) / sizeof(Vehicle*);
 
 	// Область видимости race
+	try
 	{
+		Presentation::greet();
 		Race race(vehicles, vehicleCount);
+		bool initNewRace = false;
 
 		do
 		{
@@ -34,30 +27,26 @@ int main()
 			int distanceKm = Presentation::askDistanceKm();
 			race.init(raceType, distanceKm);
 			Presentation::clearScreen();
-			bool registrationComplete = false;
-			do
+			Presentation::registerVehicles(race);
+			auto raceReport = race.createRaceResultReport();
+			Presentation::showRaceResults(raceReport);
+			initNewRace = Presentation::askNewRaceAction();
+			if (initNewRace)
 			{
-				int input = Presentation::askRegistrationAction(race);
-				registrationComplete = input == 0;
-				if (!registrationComplete)
-				{
-					Presentation::assignVehicle(race, input - 1);
-				}
-			} while (!registrationComplete);
-
-			// TODO: вывести результаты гонки
-
-		} while (input != 0);
+				Presentation::clearScreen();
+			}
+		} while (initNewRace);
 	}
-
-	// Можем удалить массив ТС
+	catch (std::exception& ex)
+	{
+		Presentation::showUnexpectedError(ex);
+		applicationResult = 1;
+	}
 
 	for (int i = 0; i < vehicleCount; ++i)
 	{
 		delete vehicles[i];
 	}
 
-	delete[] vehicles;
-
-	return 0;
+	return applicationResult;
 }

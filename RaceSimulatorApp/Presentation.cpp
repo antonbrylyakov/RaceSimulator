@@ -5,6 +5,11 @@ void Presentation::greet()
 	std::cout << "Добро пожаловать в гоночный симулятор!" << std::endl;
 }
 
+void Presentation::showInvalidInputMessage()
+{
+	std::cout << "Введено неверное значение, повторите ввод!" << std::endl;
+}
+
 std::string Presentation::getRaceTypeName(RaceType raceType)
 {
 	switch (raceType)
@@ -24,16 +29,19 @@ RaceType Presentation::askRaceTypes()
 	std::cout << AIR_RACE << ". " << getRaceTypeName(AIR_RACE) << std::endl;
 	std::cout << MIXED_RACE << ". " << getRaceTypeName(MIXED_RACE) << std::endl;
 	int input = 0;
+	bool isInputValid = false;
 	do
 	{
 		std::cout << "Выберите тип гонки: ";
 		std::cin >> input;
-		if (input < 1 || input > 2)
+		if (input != static_cast<int>(GROUND_RACE) &&
+			input != static_cast<int>(AIR_RACE) &&
+			input != static_cast<int>(MIXED_RACE))
 		{
-			input = 0;
-			std::cout << "Введено неверное значение, повторите ввод!" << std::endl;
+			isInputValid = true;
+			showInvalidInputMessage();
 		}
-	} while (input == 0);
+	} while (isInputValid);
 
 	return static_cast<RaceType>(input);
 }
@@ -48,7 +56,7 @@ int Presentation::askDistanceKm()
 		if (input <= 0)
 		{
 			input = 0;
-			std::cout << "Введено неверное значение, повторите ввод!" << std::endl;
+			showInvalidInputMessage();
 		}
 	} while (input == 0);
 
@@ -117,11 +125,25 @@ int Presentation::askRegistrationAction(Race& race)
 		isInputValid = input > 0 && input <= assignmentReport.getCount() || input == 0 && assignmentReport.isReadyToRace();
 		if (!isInputValid)
 		{
-			std::cout << "Введено неверное значение, повторите ввод!" << std::endl;
+			showInvalidInputMessage();
 		}
 	} while (!isInputValid);
 
 	return input;
+}
+
+void Presentation::registerVehicles(Race& race)
+{
+	bool registrationComplete = false;
+	do
+	{
+		int input = Presentation::askRegistrationAction(race);
+		registrationComplete = input == 0;
+		if (!registrationComplete)
+		{
+			Presentation::assignVehicle(race, input - 1);
+		}
+	} while (!registrationComplete);
 }
 
 void Presentation::assignVehicle(Race& race, int index)
@@ -142,6 +164,39 @@ void Presentation::assignVehicle(Race& race, int index)
 	}
 }
 
+void Presentation::showRaceResults(RaceResultReport& resultsReport)
+{
+	std::cout << std::endl;
+	std::cout << "Результаты гонки:" << std::endl;
+	for (int i = 0; i < resultsReport.getCount(); ++i)
+	{
+		auto item = resultsReport[i];
+		std::cout << (i + 1) << ". " << item->getVehicle()->getName() << " Время: " << item->getRaceTimeHr() << " ч." << std::endl;
+	}
+}
+
+bool Presentation::askNewRaceAction()
+{
+	int input = 0;
+	bool isInputValid = false;
+	do
+	{
+		std::cout << std::endl;
+		std::cout << "1. Провести еще одну гонку" << std::endl;
+		std::cout << "2. Выйти" << std::endl;
+		std::cout << "Выберите действие: ";
+		std::cin >> input;
+
+		isInputValid = input == 1 || input == 2;
+		if (!isInputValid)
+		{
+			showInvalidInputMessage();
+		}
+	} while (!isInputValid);
+
+	return input != 2;
+}
+
 void Presentation::clearScreen()
 {
 #ifdef _WIN32
@@ -149,4 +204,10 @@ void Presentation::clearScreen()
 #else
 	std::system("clear");
 #endif;
+}
+
+void Presentation::showUnexpectedError(std::exception ex)
+{
+	std::cout << "Непредвиденная ошибка в программе: " << ex.what() << std::endl;
+	std::cout << "Программа будет завершена" << std::endl;
 }
