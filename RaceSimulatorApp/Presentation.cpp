@@ -23,7 +23,7 @@ std::string Presentation::getRaceTypeName(RaceType raceType)
 	}
 }
 
-RaceType Presentation::askRaceTypes()
+RaceType Presentation::askRaceType()
 {
 	std::cout << GROUND_RACE << ". " << getRaceTypeName(GROUND_RACE) << std::endl;
 	std::cout << AIR_RACE << ". " << getRaceTypeName(AIR_RACE) << std::endl;
