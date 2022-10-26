@@ -12,6 +12,7 @@ Race::Race(Vehicle** vehicles, const int count)
 
 Race::~Race()
 {
+    // Класс занимается освобождением только того, что сам создает
     delete[] _vehicleAssignmentMap;
 }
 

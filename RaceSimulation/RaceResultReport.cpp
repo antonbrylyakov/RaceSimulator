@@ -12,6 +12,8 @@ RaceResultReport::RaceResultReport(RaceResultItem** items, int count)
 
 RaceResultReport::~RaceResultReport()
 {
+    // Не совсем понятно, как понять, должен ли объект освобождать объекты, которые не он выделял.
+    // В данном случае мне это нужно. По-видимому, должны быть какие-то соглашения.
 	for (int i = 0; i < _count; ++i)
 	{
 		delete _items[i];

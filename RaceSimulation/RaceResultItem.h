@@ -3,11 +3,12 @@
 
 class RaceResultItem
 {
+	friend class Race;
 	public:
-		RaceResultItem(Vehicle* vehicle, double raceTimeHr);
 		RACESIMULATION_API Vehicle* const getVehicle() const;
 		RACESIMULATION_API double getRaceTimeHr() const;
 	protected:
+		RaceResultItem(Vehicle* vehicle, double raceTimeHr);
 		Vehicle* _vehicle;
 		double _raceTimeHr;
 

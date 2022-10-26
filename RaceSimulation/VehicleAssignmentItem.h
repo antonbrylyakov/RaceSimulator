@@ -4,12 +4,13 @@
 
 class RACESIMULATION_API VehicleAssignmentItem
 {
+	friend class Race;
 	public:
-		VehicleAssignmentItem(Vehicle* vehicle, bool assigned, bool availableToAssign);
 		Vehicle* const getVehicle() const;
 		bool getAssigned() const;
 		bool getAvailableToAssign() const;
-	private:
+	protected:
+		VehicleAssignmentItem(Vehicle* vehicle, bool assigned, bool availableToAssign);
 		Vehicle* _vehicle;
 		bool _assigned;
 		bool _availableToAssign;

@@ -7,12 +7,14 @@
 class RACESIMULATION_API Vehicle
 {
 public:
+    friend class Race;
     virtual ~Vehicle();
     std::string& getName();
     VehicleType getVehicleType();
-    virtual double getRaceTimeHr(const int distanceKm) const = 0;
 protected:
     VehicleType _type;
     int _velocityKmh;
     std::string _name;
+    // Внешним пользователям библиотеки незачем иметь доступ к этому методу, но сделал доступным классу Race
+    virtual double getRaceTimeHr(const int distanceKm) const = 0;
 };
