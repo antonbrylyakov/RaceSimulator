@@ -23,7 +23,7 @@ int main()
 
 		do
 		{
-			RaceType raceType = Presentation::askRaceTypes();
+			RaceType raceType = Presentation::askRaceType();
 			int distanceKm = Presentation::askDistanceKm();
 			race.init(raceType, distanceKm);
 			Presentation::clearScreen();
