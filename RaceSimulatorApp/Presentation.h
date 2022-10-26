@@ -36,7 +36,7 @@ namespace Presentation
 	void assignVehicle(Race& race, int index);
 
 	// Выводит результаты гонки
-	void showRaceResults(RaceResultReport& resultsReport);
+	void showRaceResults(Race& race);
 
 	// Запрашивает пользователя, проводить ли еще одну гонку
 	bool askNewRaceAction();

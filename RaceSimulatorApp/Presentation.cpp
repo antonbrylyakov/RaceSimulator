@@ -164,8 +164,9 @@ void Presentation::assignVehicle(Race& race, int index)
 	}
 }
 
-void Presentation::showRaceResults(RaceResultReport& resultsReport)
+void Presentation::showRaceResults(Race& race)
 {
+	RaceResultReport resultsReport = race.createRaceResultReport();
 	std::cout << std::endl;
 	std::cout << "Результаты гонки:" << std::endl;
 	for (int i = 0; i < resultsReport.getCount(); ++i)

@@ -29,7 +29,7 @@ int main()
 			Presentation::clearScreen();
 			Presentation::registerVehicles(race);
 			auto raceReport = race.createRaceResultReport();
-			Presentation::showRaceResults(raceReport);
+			Presentation::showRaceResults(race);
 			initNewRace = Presentation::askNewRaceAction();
 			if (initNewRace)
 			{
