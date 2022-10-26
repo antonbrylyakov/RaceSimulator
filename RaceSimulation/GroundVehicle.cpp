@@ -8,7 +8,7 @@ GroundVehicle::GroundVehicle()
 
 double GroundVehicle::getMotionTimeHr(const int distanceKm) const
 {
-    return distanceKm / _velocityKmh;
+    return static_cast<double>(distanceKm) / _velocityKmh;
 }
 
 int GroundVehicle::getRestNumber(const int distanceKm) const
