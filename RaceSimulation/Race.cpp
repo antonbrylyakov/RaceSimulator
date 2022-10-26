@@ -26,7 +26,10 @@ void Race::init(RaceType type, int distanceKm)
     _type = type;
     _distanceKm = distanceKm;
     _assignedVehicleCount = 0;
-    memset(_vehicleAssignmentMap, 0, _vehicleCount * sizeof(bool));
+    for (int i = 0; i < _vehicleCount; ++i)
+    {
+        _vehicleAssignmentMap[i] = false;
+    }
 }
 
 VehicleAssignmentResult Race::assignVehicle(const int index)
